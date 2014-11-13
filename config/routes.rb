@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users
   resources :customers
   resources :owners
+  resources :sessions, only: [:new, :create, :destroy]
   
   resources :restaurants do
     resources :reviews
