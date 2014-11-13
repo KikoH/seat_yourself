@@ -1,7 +1,15 @@
 <h1>All users</h1>
 <% @users.each do |user| %>
-	<p>
-		Name: <%= link_to user.name, user_path(user) %><br>
-		Email: <%= user.email %>
-	</p>
+	<% if user.is_a? Customer %>
+		<p>
+			Customer Name: <%= link_to user.name, customer_path(user) %><br>
+			Email: <%= user.email %>
+		</p>
+	<% elsif user.is_a? Owner %>
+		<p>
+			Owner Name: <%= link_to user.name, owner_path(user) %><br>
+			Email: <%= user.email %>
+		</p>
+	<% end %>
+
 <% end %>

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :users
+  resources :customers
+  resources :owners
+  
   resources :restaurants do
     resources :reviews
   end

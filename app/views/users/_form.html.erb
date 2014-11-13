@@ -3,5 +3,9 @@
 	<%= f.text_field :email, placeholder: "Email" %>
 	<%= f.password_field :password, placeholder: "Password" %>
 	<%= f.password_field :password_confirmation, placeholder: "Confirm password" %>
+	<select name="user[type]">
+		<option value="Customer">Customer </option>
+		<option value="Owner">Owner </option>
+	</select>
 	<%= f.submit %>
 <% end %>
