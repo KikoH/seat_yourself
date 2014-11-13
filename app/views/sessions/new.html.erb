@@ -1,0 +1,8 @@
+<h1>Login</h1>
+<%= link_to "Back to restaurants page", restaurants_path %>
+
+<%= form_tag(sessions_path) do %>
+	<%= text_field_tag :email, params[:email], placeholder: "Email address" %><br>
+	<%= password_field_tag :password%>
+	<%= submit_tag "Login" %>
+<% end %>
