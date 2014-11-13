@@ -1,6 +1,4 @@
 <h1>Create new restaurant</h1>
-<%= form_for(@restaurant) do |f| %>
-	<%= f.text_field :name, placeholder: "Name" %>
-	<%= f.text_field :location, placeholder: "Location" %>
-	<%= f.submit %>
-<% end %>
+<%= link_to "List of restaurants", restaurants_path %>
+
+<%= render "form" %>
