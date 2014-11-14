@@ -1,6 +1,7 @@
 <%= form_for(@restaurant) do |f| %>
 	<%= f.text_field :name, placeholder: "Name", class: "form_fields" %><br>
 	<%= f.text_field :location, placeholder: "Location", class: "form_fields" %><br>
+	<%= f.number_field :capacity, placeholder: "Capacity", class: "form_fields" %><br>
 	<%= f.number_field :owner_id, placeholder: "Owner ID", class: "form_fields" %><br>
 	<%= f.submit class: "form_fields" %>
 <% end %>

@@ -1,9 +1,35 @@
-<h1>Restaurant Profile</h1>
-<%= link_to "List of restaurants", restaurants_path %> | 
-<%= link_to "Edit", edit_restaurant_path %> | 
-<%= link_to "Delete", @restaurant, method: :delete, data: { confirm: "Are you sure you want to delete this restaurant?" } %>
+<div class="container">
+	<h1>Restaurant Profile</h1>
+	<%= link_to "List of restaurants", restaurants_path %> | 
+	<%= link_to "Edit", edit_restaurant_path(@restaurant) %> | 
+	<%= link_to "Delete", @restaurant, method: :delete, data: { confirm: "Are you sure you want to delete this restaurant?" } %>
 
-<p>
-	<%= @restaurant.name %>
-	<%= @restaurant.location %>
-</p>
+	<p>
+		<%= @restaurant.name %>
+		<%= @restaurant.location %>
+	</p>
+
+	<h1>Create A Reservation</h1>
+	<%= form_for([@restaurant, @reservation]) do |f| %>
+		<% if @reservation.errors.any? %>
+			<h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved </h2> 
+		<% end %>
+
+		<%= f.time_field :time, class: "form_fields" %><br>
+		<%= f.date_field :date, class: "form_fields" %><br>
+		<%= f.number_field :party_size, placeholder: "Party size", class: "form_fields" %><br>
+		<%= f.submit class: "form_fields" %>
+	<% end %>
+
+	<% if @reservation %>
+		<% @restaurant.reservations.each do |reservation| %>
+			<p>
+				<%= reservation.time %><br>
+				<%= reservation.date %><br>
+				<%= reservation.party_size %>
+			</p>
+		<% end %>
+	<% end %>
+
+
+</div>
