@@ -1,11 +1,11 @@
 <%= form_for(@user) do |f| %>
-	<%= f.text_field :name, placeholder: "Name" %>
-	<%= f.text_field :email, placeholder: "Email" %>
-	<%= f.password_field :password, placeholder: "Password" %>
-	<%= f.password_field :password_confirmation, placeholder: "Confirm password" %>
-	<select name="user[type]">
+	<%= f.text_field :name, placeholder: "Name", class: "form_fields" %><br>
+	<%= f.text_field :email, placeholder: "Email", class: "form_fields" %><br>
+	<%= f.password_field :password, placeholder: "Password", class: "form_fields" %><br>
+	<%= f.password_field :password_confirmation, placeholder: "Confirm password", class: "form_fields" %><br>
+	<select name="user[type]", class="form_fields">
 		<option value="Customer">Customer </option>
 		<option value="Owner">Owner </option>
-	</select>
-	<%= f.submit %>
+	</select><br>
+	<%= f.submit class: "form_fields" %>
 <% end %>

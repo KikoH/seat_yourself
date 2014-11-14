@@ -1,15 +1,24 @@
-<h1>All users</h1>
-<% @users.each do |user| %>
-	<% if user.is_a? Customer %>
-		<p>
-			Customer Name: <%= link_to user.name, customer_path(user) %><br>
-			Email: <%= user.email %>
-		</p>
-	<% elsif user.is_a? Owner %>
-		<p>
-			Owner Name: <%= link_to user.name, owner_path(user) %><br>
-			Email: <%= user.email %>
-		</p>
-	<% end %>
-
-<% end %>
+<div class ="users_container">
+	<h1>All users</h1>
+	<table class="restaurants_table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+			</tr>
+		</thead>
+		<% @users.each do |user| %>
+			<% if user.is_a? Customer %>
+				<tr>
+					<td><%= link_to user.name, customer_path(user) %></td>
+					<td><%= user.email %></td>
+				</tr>			
+			<% elsif user.is_a? Owner %>
+				<tr>
+					<td><%= link_to user.name, owner_path(user) %></td>
+					<td><%= user.email %></td>
+				</tr>			
+			<% end %>
+		<% end %>
+	</table>	
+</div>

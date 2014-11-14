@@ -1,3 +1,25 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.users_container {
+	background: #c6e1eb;
+	margin: 0 auto;
+	padding: 10px 25px 25px;
+	width: 960px;
+	border-radius: 8px;
+}
+
+.users_container td {
+	width: 200px;
+}
+
+.users_container th {
+	text-align: left;
+}
+
+.users_table tr:nth-child(even) {
+	background: #f2f2f2;
+}
+
+
+
