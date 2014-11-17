@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'restaurants#index'
+  root 'homepages#index'
   resources :users
   resources :customers
   resources :owners

@@ -8,28 +8,18 @@
 		<%= @restaurant.name %>
 		<%= @restaurant.location %>
 	</p>
+	<p>Hours: <%= @restaurant.open_time.hour %> to <%= @restaurant.close_time.hour %> </p>
 
 	<h1>Create A Reservation</h1>
 	<%= form_for([@restaurant, @reservation]) do |f| %>
-		<% if @reservation.errors.any? %>
-			<h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved </h2> 
-		<% end %>
-
-		<%= f.time_field :time, class: "form_fields" %><br>
-		<%= f.date_field :date, class: "form_fields" %><br>
-		<%= f.number_field :party_size, placeholder: "Party size", class: "form_fields" %><br>
-		<%= f.submit class: "form_fields" %>
-	<% end %>
-
-	<% if @reservation %>
-		<% @restaurant.reservations.each do |reservation| %>
-			<p>
-				<%= reservation.time %><br>
-				<%= reservation.date %><br>
-				<%= reservation.party_size %>
-			</p>
-		<% end %>
+	<% if @reservation.errors.any? %>
+	<h2><%= @reservation.errors.full_messages.first %></h2> 
 	<% end %>
 
 
+	Date of reservation: <%= f.time_field :book_time, class: "form_fields" %><br>
+	<!--<%= f.date_field :date, class: "form_fields" %><br>-->
+	<%= f.number_field :party_size, placeholder: "Party size", class: "form_fields" %><br>
+	<%= f.submit class: "form_fields" %>
+	<% end %>
 </div>

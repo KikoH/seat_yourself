@@ -13,8 +13,10 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
-		if @user.save
-			redirect_to users_path
+		if @user.save && @user.type == "Owner"
+			redirect_to new_restaurant_path
+		elsif @user.save && @user.type == "Customer"
+			redirect_to restaurants_path
 		else
 			render :new
 		end

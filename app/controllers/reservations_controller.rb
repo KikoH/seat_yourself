@@ -16,8 +16,10 @@ class ReservationsController < ApplicationController
 
 		@reservation = @restaurant.reservations.build(reservation_params)
 
+		@user = @restaurant.owner
+
 		if @reservation.save
-			redirect_to restaurants_path notice: "Reservation created successfully"
+			redirect_to restaurants_path, notice: "Reservation created successfully"
 		else
 			render 'restaurants/show'
 		end
@@ -25,6 +27,6 @@ class ReservationsController < ApplicationController
 
 	private
 	def reservation_params
-		params.require(:reservation).permit(:time, :date, :party_size)
+		params.require(:reservation).permit(:date, :party_size, :book_time)
 	end
 end

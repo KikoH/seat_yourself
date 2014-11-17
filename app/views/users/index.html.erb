@@ -12,12 +12,12 @@
 				<tr>
 					<td><%= link_to user.name, customer_path(user) %></td>
 					<td><%= user.email %></td>
-				</tr>			
+				</tr>
 			<% elsif user.is_a? Owner %>
 				<tr>
 					<td><%= link_to user.name, owner_path(user) %></td>
 					<td><%= user.email %></td>
-				</tr>			
+				</tr>
 			<% end %>
 		<% end %>
 	</table>	

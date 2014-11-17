@@ -1,6 +1,5 @@
 <div class="container">
 	<h1>Login</h1>
-	<%= link_to "Back to restaurants page", restaurants_path %>
 
 	<%= form_tag(sessions_path) do %>
 		<%= text_field_tag :email, params[:email], placeholder: "Email address", class: 'form_fields' %><br>
