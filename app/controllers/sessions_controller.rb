@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  
   def create
   	user = User.find_by(email: params[:email])
   	if user && user.type == "Owner" && user.authenticate(params[:password])
@@ -15,7 +16,7 @@ class SessionsController < ApplicationController
 
   def destroy
   	session[:user_id] = nil
-  	redirect_to restaurants_path, notice: "GTFO!"
+  	redirect_to restaurants_path, notice: "Logged out!"
   end
 end
 
