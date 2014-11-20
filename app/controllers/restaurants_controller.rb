@@ -1,12 +1,15 @@
 class RestaurantsController < ApplicationController
+	before_filter :ensure_owner, only: [:new, :create]
+
 	def index
 		@restaurants = Restaurant.all
 	end
 
 	def show
 		@restaurant = Restaurant.find(params[:id])
-
-		@reservation = @restaurant.reservations.build
+		if current_user.type == "Owner"
+			@reservation = @restaurant.reservations.build
+		end
 	end
 
 	def new
@@ -15,7 +18,7 @@ class RestaurantsController < ApplicationController
 
 	def create
 		@restaurant = Restaurant.new(restaurant_params)
-
+		@restaurant.owner_id = current_user.id
 		if @restaurant.save
 			redirect_to restaurant_path(@restaurant)
 		else
