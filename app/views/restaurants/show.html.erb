@@ -8,8 +8,9 @@
 		<%= @restaurant.name %>
 		<%= @restaurant.location %>
 	</p>
-	<p>Hours: <%= @restaurant.open_time.hour %> to <%= @restaurant.close_time.hour %> </p>
-
+	<% if @restaurant.open_time && @restaurant.close_time %>
+		<p>Hours: <%= @restaurant.open_time.hour %> to <%= @restaurant.close_time.hour %> </p>
+	<% end %>
 	<h1>Create A Reservation</h1>
 	<%= form_for([@restaurant, @reservation]) do |f| %>
 	<% if @reservation.errors.any? %>
@@ -17,7 +18,8 @@
 	<% end %>
 
 
-	Date of reservation: <%= f.time_field :book_time, class: "form_fields" %><br>
+	Date of reservation: <%#= f.time_field :book_time, class: "form_fields" %><br>
+	Date of reservation: <%= f.datetime_select :book_time,  start_hour: @restaurant.open_time.hour, discard_minute: true, class: "form_fields" %><br>
 	<!--<%= f.date_field :date, class: "form_fields" %><br>-->
 	<%= f.number_field :party_size, placeholder: "Party size", class: "form_fields" %><br>
 	<%= f.submit class: "form_fields" %>
