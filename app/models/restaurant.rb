@@ -12,5 +12,4 @@ class Restaurant < ActiveRecord::Base
 			return false
 		end
 	end
-
 end

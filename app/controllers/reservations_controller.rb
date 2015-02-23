@@ -1,15 +1,11 @@
 class ReservationsController < ApplicationController
-	def index
-		@reservations = Reservation.all
-	end
-
 	def show
 		@reservation = Reservation.find(params[:id])
 	end
 
 	def create
 		@restaurant = Restaurant.find(params[:restaurant_id])
-		
+
 		# This is the equivalent of the .build method
 		# @reservation = Reservation.new(reservation_params)
 		# @reservation.restaurant = @restaurant 
@@ -27,6 +23,6 @@ class ReservationsController < ApplicationController
 
 	private
 	def reservation_params
-		params.require(:reservation).permit(:date, :party_size, :book_time)
+		params.require(:reservation).permit(:date, :party_size, :book_time, :customer_id)
 	end
 end

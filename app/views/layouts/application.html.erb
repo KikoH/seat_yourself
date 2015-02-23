@@ -1,32 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Table3</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<title>Table3</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<%= csrf_meta_tags %>
 </head>
 <body>
 
-<% if flash[:notice] %>
-	<p><%= flash[:notice] %></p>
-<% end %>
-<% if flash[:alert] %>
-	<p><%= flash[:alert] %></p>
-<% end %>
+	<div class="container">
+		<div class="header">
+			<nav>
+				<ul class="nav nav-pills pull-right">
+				
+					<li role="presentation"><%= link_to "All restaurants", restaurants_path %></li>
+					
+					<% if current_user %>
+					<li role="presentation" class="active"><%= link_to current_user.name, current_user%></li>
+					<li role="presentation"><%= link_to "Log out", session_path("current"), :method => :delete %></li>
+					<% else %>
+					<li role="presentation"><%= link_to "Login", new_session_path, class: "navbar-brand" %></li>
+					<li role="presentation"><%= link_to "Signup", new_user_path, class: "navbar-brand"%></li>
+					<% end %>
+				</ul>
+			</nav>
+			<h3 class="text-muted"><%= link_to "Seat Yourself", root_path %> </h3>
+		</div>
 
-<nav>
-	<% if current_user %>
-		Signed in as <%= link_to current_user.name, current_user %> |
-		<%= link_to "Log out", session_path("current"), :method => :delete %>
-	<% else %> 
-		<div class="login"><%= link_to "Login", new_session_path %></div>
-		<div class="signup"><%= link_to "Signup", new_user_path %></div>
-	<% end %>
-</nav>
+		<%= yield %>
 
+		<footer class="footer">
+			<p>&copy; Seat Yourself</p>
+		</footer>
 
-<%= yield %>
+	</div> <!-- /container -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
